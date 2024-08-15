@@ -1,13 +1,19 @@
-import React from 'react'
-import Navbar from './Header/Navbar'
-import { Box } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import Layoults from './Layoult/Layoults'
 
 const News = () => {
   return (
     <Box>
         <Layoults>
-            <div>news</div>
+          <Stack         
+          sx={{
+            height: "100%",
+            justifyContent: "space-between",
+          }}>
+          <Typography variant="h3">
+            News
+          </Typography>
+          </Stack>
         </Layoults>
     </Box>
   )

@@ -1,39 +1,61 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Stack, Typography } from '@mui/material'
-import React from 'react'
-import Navbar from './Header/Navbar'
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Stack, Typography } from '@mui/material'
 import Layoults from './Layoult/Layoults'
+import currentNews from "../content/currentNews.json"
+import upArrow from "../assets/gifs/upArrow.gif"
 
-const Home = () => {
+const Home = ({theme}) => {
+
+  const secondaryTheme = theme.palette.secondary;
+  console.log(currentNews);
+
+  let positivity;
+  if(currentNews.positivity === true){
+    positivity = "green"
+  } else if (currentNews.positivity === false) {
+    positivity = "red"
+  } else {
+    positivity = "yellow"
+  }
+
   return (
     <Layoults>
       <Stack
-      sx={{
-        justifyContent: "space-evenly",
-        height: "100%"
-      }}
+        sx={{
+          height: "100%",
+          alignItems: "center",
+          gap: "3rem"
+        }}
       >
-        <Box>
-          <h1>Das</h1>
-        </Box>
-        <Card sx={{ maxWidth: 345 }}>
-          <CardMedia
-            sx={{ height: 140 }}
-            image="/static/images/cards/contemplative-reptile.jpg"
-            title="green iguana"
-          />
+        <Typography variant="h3">
+          Das
+        </Typography>
+        <Card sx={{ maxWidth: 345, backgroundColor: positivity}}>
           <CardContent>
+            
             <Typography gutterBottom variant="h5" component="div">
-              Lizard
+              What's on?
             </Typography>
+
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 0, sm: 0, md: 0 }}>
+              <Grid item xs={9}>
+                <Typography gutterBottom variant="h5" component="div">
+                  {currentNews.title}
+                </Typography>
+              </Grid>
+              <Grid item xs={2}>
+                {currentNews.positivity === true ?
+                  (<img style={{width: "2rem"}} src={upArrow} alt="upArrow" />) : ""
+                }
+              </Grid>
+            </Grid>
             <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over 6,000
-              species, ranging across all continents except Antarctica
+            {currentNews.text}
+            </Typography>
+            <Typography variant='caption' color="CaptionText">
+              {currentNews.date}
             </Typography>
           </CardContent>
-          <CardActions>
-            <Button size="small">Share</Button>
-            <Button size="small">Learn More</Button>
-          </CardActions>
+
         </Card>
       </Stack>
     </Layoults>
