@@ -5,8 +5,10 @@ import './App.css'
 import { createTheme } from '@mui/material'
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import News from './components/news'
-import Home from './components/home'
+import News from './components/News'
+import Home from './components/Home'
+import Current from './components/graphs/Current'
+import Predictions from './components/graphs/Predictions'
 
 function App() {
 
@@ -33,6 +35,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Home theme={theme} />} />
       <Route path="/news" element={<News />} />
+      <Route path="/graphs/current" element={<Current />} />
+      <Route path="/graphs/predictions" element={<Predictions />} />
     </Routes>
    
   )

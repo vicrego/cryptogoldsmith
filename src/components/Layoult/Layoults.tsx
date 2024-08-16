@@ -1,5 +1,5 @@
 import React, { Children } from 'react'
-import Navbar from '../Header/Navbar'
+import Navbar from '../header/Navbar'
 import { Outlet } from 'react-router-dom'
 import { Box, Stack } from '@mui/material'
 import { createTheme } from '@mui/material/styles';

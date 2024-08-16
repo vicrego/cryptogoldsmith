@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material'
-import Layoults from './Layoult/Layoults'
+import Layoults from './layoult/Layoults'
 
 const News = () => {
   return (

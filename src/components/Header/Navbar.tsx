@@ -1,6 +1,6 @@
 import { Avatar, Box, Button, ButtonGroup, ClickAwayListener, Grow, Menu, MenuItem, MenuList, Paper, Popper, Select, Typography } from '@mui/material'
 import React from 'react'
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -69,11 +69,12 @@ const Navbar = () => {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList id="split-button-menu" autoFocusItem>
                     <MenuItem>
-                    Current Prices
+                    <Link to={"../graphs/current"}>Current Prices
+                    </Link>
                     </MenuItem>
-                    <MenuItem>
+                    <Link to={"../graphs/predictions"}>
                     Price Predictions
-                    </MenuItem>
+                    </Link>
                   </MenuList>
                 </ClickAwayListener>
               </ul>
