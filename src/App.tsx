@@ -5,8 +5,8 @@ import './App.css'
 import { createTheme } from '@mui/material'
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import News from './components/News'
-import Home from './components/Home'
+import News from './components/news/News'
+import Home from './components/home/Home'
 import Current from './components/graphs/Current'
 import Predictions from './components/graphs/Predictions'
 
