@@ -4,30 +4,13 @@ import currentNews from "../../content/currentNews.json"
 import upArrow from "../assets/gifs/upArrow.gif"
 import { useState } from 'react'
 import CardReport from './cards/CardReport'
-import CardsDisplay from './cards/CardsDisplay'
+import CardsDisplay from './cards/CardsHomeDisplay'
 
 
 
 
 const Home = ({theme}:any) => {
-
-  const count = Math.ceil(currentNews.length / 3);
-  const [page, setPage] = useState(1);
-  const handleChange = (event, value: any) => {
-    setPage(paginator(currentNews, value, 3).page);
-  };
-  const [checked, setChecked] = useState([]);
-  const handleOnChange = (e, index: any) => {
-    let prev = checked;
-    let itemIndex = prev.indexOf(index);
-    if (itemIndex !== -1) {
-      prev.splice(itemIndex, 1);
-    } else {
-      prev.push(index);
-    }
-    setChecked([...prev]);
-  };
-
+ 
 
   return (
     <Layoults>
@@ -35,16 +18,17 @@ const Home = ({theme}:any) => {
         sx={{
           height: "100%",
           alignItems: "center",
-          gap: "3rem"
+          gap: 1.5
         }}
+        
       >
-        <Typography variant="h3" >
+        <Typography variant="h3" sx={{p: 2}}>
           Das
         </Typography>
-        <CardReport currentNews={currentNews}/>  
+        
+        <CardReport currentNews={currentNews}/> 
         <CardsDisplay currentNews={currentNews}/>
-
-
+        
       </Stack>
     </Layoults>
   )

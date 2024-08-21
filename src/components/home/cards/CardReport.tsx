@@ -1,5 +1,4 @@
 import { Card, CardContent, Grid, Typography } from '@mui/material'
-import React from 'react'
 import upArrow from "../../../assets/gifs/upArrow.gif"
 
 const CardReport = ({currentNews}: any) => {
@@ -16,7 +15,7 @@ const CardReport = ({currentNews}: any) => {
   return (
     <Card sx={{ maxWidth: 345, backgroundColor: positivity}}>
       <CardContent>
-        
+                
         <Typography gutterBottom variant="h5" component="div" textAlign={"center"} color={"yellow"}>
             WHAT's ON?
         </Typography>

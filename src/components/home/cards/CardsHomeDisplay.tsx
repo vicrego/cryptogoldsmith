@@ -23,7 +23,7 @@ function paginator(items: any, current_page: any, per_page_items: any) {
     };
 }
 
-const CardsDisplay = ({currentNews}: any) => {
+const CardsHomeDisplay = ({currentNews}: any) => {
     let positivity;
     if(currentNews[0].positivity === true){
       positivity = "green"
@@ -40,11 +40,13 @@ const CardsDisplay = ({currentNews}: any) => {
     };
     
     return (
-        <Stack>
-            <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Box>
+            <Grid container rowSpacing={2} 
+                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+            >
             {paginator(currentNews, page, 4).data.map((filteredNews: any, index: any) => (
-                <Grid item xs={6} key={index}>  
-                <Card sx={{ maxWidth: 345, backgroundColor: positivity }}>
+                <Grid item sx={{ width: "15rem"}} xs={6} key={index}>  
+                <Card sx={{ backgroundColor: positivity }}>
                     <CardContent>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 0, sm: 0, md: 0 }}>
                         <Grid item xs={9}>
@@ -53,7 +55,7 @@ const CardsDisplay = ({currentNews}: any) => {
                         </Typography>
                         </Grid>
                     </Grid>
-                    <Typography variant="body2" color="yellow">
+                    <Typography variant="body2" color="yellow" textAlign={"justify"}>
                         {filteredNews.text}
                     </Typography>
                     <Typography variant="caption" color="CaptionText" component="div" textAlign={"center"}>
@@ -67,8 +69,8 @@ const CardsDisplay = ({currentNews}: any) => {
             <Box sx={{ p:3, display: "flex", justifyContent: "center" }}>
                 <Pagination count={count} page={page} onChange={handleChange} color="primary" sx={{ button: { color: '#ffffff' } }} />
             </Box>
-        </Stack>
+        </Box>
       );
     };
 
-export default CardsDisplay
+export default CardsHomeDisplay
