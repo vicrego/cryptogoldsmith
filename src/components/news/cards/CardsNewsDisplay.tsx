@@ -5,9 +5,7 @@ import React, { useState } from 'react'
 
 
 function paginator(items: any, current_page: any, per_page_items: any) {
-  console.log("items",items)
-  console.log("items",current_page)
-  console.log("per_page",per_page_items)
+
 
   
   let page = current_page || 1,
@@ -55,23 +53,23 @@ const CardsNewsDisplay = ({news}: any) => {
             >
             {paginator(newsData, page, 4).data.map((filteredNews: any, index: any) => (
                 <Grid item sx={{ width: "15rem"}} xs={6} key={index}>  
-                <Card >
-                    <CardContent>
-                    <Grid container rowSpacing={1} columnSpacing={{ xs: 0, sm: 0, md: 0 }}>
-                        <Grid item xs={9}>
-                        <Typography gutterBottom variant="h5" component="div" >
-                            {filteredNews.title}
-                        </Typography>
-                        </Grid>
-                    </Grid>
-                    <Typography variant="body2" textAlign={"justify"}>
-                        {/*filteredNews.content*/}
-                    </Typography>
-                    <Typography variant="caption" color="CaptionText" component="div" textAlign={"center"}>
-                        {filteredNews.date}
-                    </Typography>
-                    </CardContent>
-                </Card>
+                  <Card >
+                      <CardContent>
+                      <Grid container rowSpacing={1} columnSpacing={{ xs: 0, sm: 0, md: 0 }}>
+                          <Grid item xs={9}>
+                          <Typography gutterBottom variant="h5" component="div" >
+                              {filteredNews.title}
+                          </Typography>
+                          </Grid>
+                      </Grid>
+                      <Typography variant="body2" textAlign={"justify"}>
+                          {/*filteredNews.content*/}
+                      </Typography>
+                      <Typography variant="caption" color="CaptionText" component="div" textAlign={"center"}>
+                          {filteredNews.date}
+                      </Typography>
+                      </CardContent>
+                  </Card>
                 </Grid>
             ))}
             </Grid>

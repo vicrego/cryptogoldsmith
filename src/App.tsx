@@ -7,8 +7,8 @@ import { createTheme } from '@mui/material'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import News from './components/news/News'
 import Home from './components/home/Home'
-import Current from './components/graphs/Current'
-import Predictions from './components/graphs/Predictions'
+import Current from './components/graphs/currentPrices/Current'
+import Predictions from './components/graphs/predictions/Predictions'
 
 function App() {
 

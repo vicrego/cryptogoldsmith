@@ -8,7 +8,7 @@ import CardsNewsDisplay from './cards/CardsNewsDisplay';
 const News = () => {
 
 
-  const [news, SetNews] = useState([]);
+  const [news, setNews] = useState([]);
   /*
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +20,7 @@ const News = () => {
             'x-rapidapi-host': 'crypto-news-api5.p.rapidapi.com'
           }
         });
-        SetNews(response.data);
+        setNews(response.data);
       } catch (error) {
         console.log("error")
       } finally {

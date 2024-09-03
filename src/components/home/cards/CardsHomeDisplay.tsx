@@ -24,15 +24,18 @@ function paginator(items: any, current_page: any, per_page_items: any) {
 }
 
 const CardsHomeDisplay = ({currentNews}: any) => {
-    let positivity;
-    if(currentNews[0].positivity === true){
-      positivity = "green"
-    } else if (currentNews[0].positivity === false) {
-      positivity = "red"
-    } else {
-      positivity = "yellow"
+    //let positivity;
+/*
+    const handleColors = () => {
+      if(currentNews[0].positivity === true){
+        positivity = "green"
+      } else if (currentNews[0].positivity === false) {
+        positivity = "red"
+      } else {
+        positivity = "yellow"
+      }
     }
-
+*/
     const count = Math.ceil(currentNews.length / 4);
     const [page, setPage] = useState(1);
     const handleChange = (event, value) => {
@@ -44,21 +47,21 @@ const CardsHomeDisplay = ({currentNews}: any) => {
             <Grid container rowSpacing={2} 
                 columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
-            {paginator(currentNews, page, 4).data.map((filteredNews: any, index: any) => (
-                <Grid item sx={{ width: "15rem"}} xs={6} key={index}>  
-                <Card sx={{ backgroundColor: positivity }}>
+            {paginator(currentNews, page, 4).data.filter(filtered => filtered !== currentNews[0]).map((filteredNews: any, index: any) => (
+                <Grid item sx={{ width: "30rem"}} xs={6} key={index}>  
+                <Card sx={{ backgroundColor: filteredNews.positivity ? "green" : filteredNews.positivity === false ? "red" : "yellow"}}>
                     <CardContent>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 0, sm: 0, md: 0 }}>
                         <Grid item xs={9}>
-                        <Typography gutterBottom variant="h5" component="div" color={"yellow"}>
+                        <Typography gutterBottom variant="h5" component="div" sx={{color: filteredNews.positivity ? "yellow" : filteredNews.positivity === false ? "yellow" : "black"}}>
                             {filteredNews.title}
                         </Typography>
                         </Grid>
                     </Grid>
-                    <Typography variant="body2" color="yellow" textAlign={"justify"}>
+                    <Typography variant="body2" sx={{color: filteredNews.positivity ? "yellow" : filteredNews.positivity === false ? "yellow" : "black"}} textAlign={"justify"}>
                         {filteredNews.text}
                     </Typography>
-                    <Typography variant="caption" color="CaptionText" component="div" textAlign={"center"}>
+                    <Typography variant="caption"  component="div" textAlign={"center"}>
                         {filteredNews.date}
                     </Typography>
                     </CardContent>

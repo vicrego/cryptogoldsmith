@@ -1,0 +1,40 @@
+
+
+
+[
+    {
+        "name": "Michal Saylor",
+        "price": {
+            "bullish": 49000000, 
+            "bear": 3000000
+        },
+        "date": 2045,
+        "description": "Michael Saylor is the chairman, co-founder and former CEO of MicroStrategy, an American company that provides business intelligence, mobile software and cloud-based services. He is one of the most vocal supporters and prolific buyers of Bitcoin BTC tickers down $64,184.Saylor co-founded MicroStrategy with Sanju Bansal and was its CEO from 1989 to 2022. He also served as chairman of the board of directors of MicroStrategy since the early days of co-founding the company. On Aug. 8, 2022, Saylor resigned as CEO but continued serving as MicroStrategy’s executive chairman.",
+        "statement": "“It could be a <b>$3 million</b> bear case, it could be a <b>$49 million</b> bull case.”",
+        "img": "../michaelsaylor.webp"
+    },
+    {
+        "name": "Mark Cuban",
+        "price": "Good.",
+        "description": "He is a bit",
+        "img": "../markcuban.webp"
+        
+    },
+    {
+        "name": "Johnny Walsh",
+        "price": "Bad.",
+        "description": "He is a bad boy"
+    },
+    {
+        "name": "Robert T. Kiyosaki",
+        "price": {
+            "bullish": 1200000
+        },
+        "date": 2026,
+        "description": "The author of Rich Dad Poor Dad",
+        "statement": "1.200.000 (2026).",
+        "img": "../robertkiyosaki.jpg"
+    }
+    
+    
+]
