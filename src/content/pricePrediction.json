@@ -21,11 +21,6 @@
         
     },
     {
-        "name": "Johnny Walsh",
-        "price": "Bad.",
-        "description": "He is a bad boy"
-    },
-    {
         "name": "Robert T. Kiyosaki",
         "price": {
             "bullish": 1200000

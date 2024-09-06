@@ -10,8 +10,7 @@ import CardsDisplay from './cards/CardsHomeDisplay'
 
 
 const Home = ({theme}:any) => {
- 
-
+  
   return (
     <Layoults>
       <Stack
@@ -25,10 +24,8 @@ const Home = ({theme}:any) => {
         <Typography variant="h3" sx={{p: 2}}>
           Das
         </Typography>
-        
         <CardReport currentNews={currentNews}/> 
         <CardsDisplay currentNews={currentNews}/>
-        
       </Stack>
     </Layoults>
   )

@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react';
 import { Avatar, Box, Button, ButtonGroup, ClickAwayListener, Grow, Menu, MenuItem, MenuList, Paper, Popper, Select, Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom';
@@ -5,8 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
-
-
+  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
   
@@ -15,10 +15,8 @@ const Navbar = () => {
   };
 
   const handleClose = () => {
-
     setOpen(false);
   };
-
 
   return (
     <Box
@@ -33,10 +31,10 @@ const Navbar = () => {
           textAlign: 'center' 
       }}>
       <Typography sx={{ minWidth: 100 }}>
-        <Button href={"/"} variant="contained">Home</Button>
+        <Button href={"/"} sx={{backgroundColor: theme.palette.primary.dark}} variant="contained">Home</Button>
       </Typography>
       <Typography sx={{ minWidth: 100 }}>
-        <Button href={"/news" } variant="contained">News</Button>
+        <Button href={"/news" } sx={{backgroundColor: theme.palette.primary.dark}} variant="contained">News</Button>
       </Typography>   
         
       <ButtonGroup
@@ -44,11 +42,11 @@ const Navbar = () => {
         ref={anchorRef}
         aria-label="Button group with a nested menu"
       >
-        <Button onClick={handleClick}>Graphs</Button>
+        <Button onClick={handleClick} sx={{backgroundColor: theme.palette.primary.dark}}>Graphs</Button>
       </ButtonGroup>
       <Popper
         sx={{
-          zIndex: 1,
+          zIndex: 100,
         }}
         open={open}
         anchorEl={anchorRef.current}

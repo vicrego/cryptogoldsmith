@@ -1,5 +1,6 @@
 
 
+import { useTheme } from '@emotion/react';
 import { Box, Card, CardContent, Grid, Pagination, Stack, Typography } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -24,56 +25,58 @@ function paginator(items: any, current_page: any, per_page_items: any) {
 }
 
 const CardsHomeDisplay = ({currentNews}: any) => {
-    //let positivity;
-/*
-    const handleColors = () => {
-      if(currentNews[0].positivity === true){
-        positivity = "green"
-      } else if (currentNews[0].positivity === false) {
-        positivity = "red"
-      } else {
-        positivity = "yellow"
-      }
-    }
-*/
-    const count = Math.ceil(currentNews.length / 4);
-    const [page, setPage] = useState(1);
-    const handleChange = (event, value) => {
-      setPage(paginator(currentNews, value, 3).page);
-    };
-    
-    return (
-        <Box>
-            <Grid container rowSpacing={2} 
-                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            >
-            {paginator(currentNews, page, 4).data.filter(filtered => filtered !== currentNews[0]).map((filteredNews: any, index: any) => (
-                <Grid item sx={{ width: "30rem"}} xs={6} key={index}>  
-                <Card sx={{ backgroundColor: filteredNews.positivity ? "green" : filteredNews.positivity === false ? "red" : "yellow"}}>
-                    <CardContent>
-                    <Grid container rowSpacing={1} columnSpacing={{ xs: 0, sm: 0, md: 0 }}>
-                        <Grid item xs={9}>
-                        <Typography gutterBottom variant="h5" component="div" sx={{color: filteredNews.positivity ? "yellow" : filteredNews.positivity === false ? "yellow" : "black"}}>
-                            {filteredNews.title}
-                        </Typography>
-                        </Grid>
-                    </Grid>
-                    <Typography variant="body2" sx={{color: filteredNews.positivity ? "yellow" : filteredNews.positivity === false ? "yellow" : "black"}} textAlign={"justify"}>
-                        {filteredNews.text}
-                    </Typography>
-                    <Typography variant="caption"  component="div" textAlign={"center"}>
-                        {filteredNews.date}
-                    </Typography>
-                    </CardContent>
-                </Card>
-                </Grid>
-            ))}
-            </Grid>
-            <Box sx={{ p:3, display: "flex", justifyContent: "center" }}>
-                <Pagination count={count} page={page} onChange={handleChange} color="primary" sx={{ button: { color: '#ffffff' } }} />
-            </Box>
-        </Box>
-      );
-    };
+
+  const theme = useTheme();
+  
+
+  const count = Math.ceil(currentNews.length / 4);
+  const [page, setPage] = useState(1);
+  const handleChange = (event, value) => {
+    setPage(paginator(currentNews, value, 3).page);
+  };
+
+  let positivity;
+  if(currentNews[0].positivity === true){
+    positivity = "green"
+  } else if (currentNews[0].positivity === false) {
+    positivity = "red"
+  } else {
+    positivity = "yellow"
+  }
+
+  
+  return (
+    <Box>
+      <Grid container rowSpacing={2} 
+          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      >
+      {paginator(currentNews, page, 4).data.filter(filtered => filtered !== currentNews[0]).map((filteredNews: any, index: any) => (
+          <Grid item sx={{ width: "30rem"}} xs={6} key={index}>  
+          <Card sx={{ backgroundColor: theme.palette.primary.dark}}>
+              <CardContent>
+              <Grid container rowSpacing={1} columnSpacing={{ xs: 0, sm: 0, md: 0 }}>
+                  <Grid item xs={9}>
+                  <Typography gutterBottom variant="h5" component="div" sx={{color: filteredNews.positivity ? "green" : filteredNews.positivity === false ? "red" : "yellow"}}>
+                      {filteredNews.title}
+                  </Typography>
+                  </Grid>
+              </Grid>
+              <Typography variant="body2" sx={{color: 'white'}} textAlign={"justify"}>
+                  {filteredNews.text}
+              </Typography>
+              <Typography variant="caption" sx={{color: 'white'}} component="div" textAlign={"center"}>
+                  {filteredNews.date}
+              </Typography>
+              </CardContent>
+          </Card>
+          </Grid>
+      ))}
+      </Grid>
+      <Box sx={{ p:3, display: "flex", justifyContent: "center" }}>
+          <Pagination count={count} page={page} onChange={handleChange} color="primary" sx={{ button: { color: '#ffffff' } }} />
+      </Box>
+    </Box>
+  );
+};
 
 export default CardsHomeDisplay

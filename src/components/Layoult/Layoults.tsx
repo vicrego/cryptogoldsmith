@@ -1,14 +1,11 @@
 import React, { Children } from 'react'
-import Navbar from '../header/Navbar'
+import Navbar from '../Header/Navbar'
 import { Outlet } from 'react-router-dom'
 import { Box, Stack } from '@mui/material'
 import { createTheme } from '@mui/material/styles';
 
 
-const Layoults = ({ children, ...props }: { children: React.ReactNode }) => {
-
-
-
+const Layoults = ( { children, ...props }: { children: React.ReactNode }) => {
 
   return (
     <Stack  
@@ -16,15 +13,15 @@ const Layoults = ({ children, ...props }: { children: React.ReactNode }) => {
         height: "100vh",
       }}
     >
-        <Navbar/>
-        <Stack 
+      <Navbar/>
+      <Stack 
         sx={{
           p: "0 2rem", 
           height: "100%",
         }}
-        >
-          {children}
-        </Stack>
+      >
+        {children}
+      </Stack>
     </Stack>
   )
 }
