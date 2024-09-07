@@ -68,15 +68,6 @@ const Predictions = () => {
     } 
   }
 
-  
-
-  useEffect(() => {
-    console.log("uiui")
-    if (sanitizedCharactersArray.length > 0) {
-      setSelectedCharacter(sanitizedCharactersArray[0]); // Set initial character
-    }
-  }, [character]);
-  
   const handleInputText = (value: any, name: any, values: any) => {
     if(selectedRadio === "bullish"){
       calculation(value, values, character?.price.bullish);
@@ -98,18 +89,15 @@ const Predictions = () => {
       
       outputDollars = inputDollars * futureDollarPrice / currentDollarPrice;
       let outputRounded = Math.round((outputDollars + Number.EPSILON) * 100) / 100;
-      setPrediction(outputRounded);
-      
+      setPrediction(outputRounded);      
     }
   }
-
-  
 
   return (
     <Layoults>
       {phoneDisplay ? (
         <Stack>
-          <Stack sx={{maxHeight: "fit-content"}}> 
+          <Stack> 
             <Carousel
               autoPlay={false} // <-- You probaly want to disable this for our purposes
               indicators={false}
@@ -127,41 +115,35 @@ const Predictions = () => {
                   backgroundColor: theme.palette.primary.dark,
                 }
               }}    
-              /*indicatorContainerProps={{
-                style: {
-                    marginTop: 50, // 5
-
-                }
-              }}*/
             >
-              {sanitizedCharactersArray.map((character: any) => (
-              <Box sx={{height: 380}}>
-                <Box >
-                  <ImageListItem 
-                    sx={{
-                      width: "20rem", 
-                      alignItems: "center", 
-                      marginLeft: "auto", 
-                      marginRight: "auto",
-                    }} 
-                    key={character.img} 
-                  >
-                    <img
-                      srcSet={`${character.img}`}
-                      src={`${character.img}`}
-                      alt={character.name}
-                      loading="lazy"
-                      style={{backgroundColor: "yellow", alignSelf: "center"}}
-                    />  
-                    <Typography gutterBottom variant="h5" component="div" textAlign={"center"} sx={{color: "silver"}}>
-                      {character.name} 
-                    </Typography>
-                  </ImageListItem>
+              {sanitizedCharactersArray.map((data: any) => (
+                <Box sx={{height: 380}}>
+                  <Box >
+                    <ImageListItem 
+                      sx={{
+                        width: "20rem", 
+                        alignItems: "center", 
+                        marginLeft: "auto", 
+                        marginRight: "auto",
+                      }} 
+                      key={character?.img} 
+                    >
+                      <img
+                        srcSet={`${character?.img}`}
+                        src={`${character?.img}`}
+                        alt={character?.name}
+                        loading="lazy"
+                        style={{backgroundColor: "yellow", alignSelf: "center"}}
+                      />  
+                      <Typography gutterBottom variant="h5" component="div" textAlign={"center"} sx={{color: "silver"}}>
+                        {character?.name} 
+                      </Typography>
+                    </ImageListItem>
+                  </Box>
                 </Box>
-              </Box>
               ))}
             </Carousel>
-            <Box >
+            <Box sx={{marginBottom: 5}}>
               <Typography variant="h3" sx={{p: 2}} textAlign="center">
                 Predictions
               </Typography>
@@ -179,11 +161,12 @@ const Predictions = () => {
                 </FormLabel>
                 <Grid container       
                   direction="row"
-                  justifyContent="center"
+                  justifyContent="left"
                   alignItems="stretch"
                   rowSpacing={1} 
-                  columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
-                  <Grid item xs={5}>
+                  sx={{paddingLeft: 3.2}}
+                  columnSpacing={{ xs: 10 }} >
+                  <Grid item sm={4}>
                     <RadioGroup
                       id="radio-buttons-group"
                       aria-labelledby="demo-radio-buttons-group-label"
@@ -192,46 +175,60 @@ const Predictions = () => {
                       onChange={() => handleRadio()}
                     >
                       {character?.price.bullish &&
-                        (<FormControlLabel value="bullish" control={<Radio />} label="Bullish" />)
+                        (<FormControlLabel  
+                          value="bullish" 
+                          control={<Radio sx={{
+                            '& .MuiSvgIcon-root': {
+                              fontSize: 34,
+                            },
+                          }}/>} 
+                          label="Bullish" 
+                        />)
                       }
                       {character?.price.bear &&
-                        <FormControlLabel value="bear" control={<Radio />} label="Bear" />
+                        <FormControlLabel value="bear" control={<Radio sx={{
+                          '& .MuiSvgIcon-root': {
+                            fontSize: 34,
+                          },
+                        }}/>} label="Bear" />
                       }
                     </RadioGroup>
                   </Grid>
-                  <Grid item sm={3} sx={{alignContent: "center"}}>
+                  <Grid item  sx={{alignContent: "center"}}>
                     <CurrencyInput
                       id="input-example"
                       name="input-name"
                       placeholder="Enter a number"
                       decimalsLimit={2}
+                      style={{padding: "0.6rem 1rem", width: 130, fontSize: "100%" }}
                       value={inputValue}
                       onValueChange={(value, name, values) => handleInputText(value, "Input number", values)}
                     />
                   </Grid>
                 </Grid>
-                <Box
+                <Box 
                   sx={{
-                    //alignContent: "center", 
-                    background: theme.palette.primary.dark, 
-                    borderRadius: 5,
-                    width: "50%"
-                  }}
-                >
-                  <Typography variant="h4" sx={{p: 2, color: 'white'}} textAlign="center">
+                    background: "white", 
+                    //width: "100%",
+                    //borderRadius: 5, 
+                  }}>
+                  <Typography variant="h4" 
+                    sx={{
+                      p: 0.2, 
+                      color: theme.palette.primary.dark,
+                    }}
+                  >
                     ${prediction}
                   </Typography>
                 </Box>
               </FormControl>
             </Box>
-
           </Stack>
-          
         </Stack>
       ) : (
         <Grid container rowSpacing={1} columns={{ sm: 3.9, md: 28, lg: 40 }} >
           <Grid item sm={1.5} md={8.5} lg={12} >
-            <ImageList sx={{ width: 240, height: "80vh"}} cols={1} rowHeight={300}>
+            <ImageList className="characterButton" sx={{ width: 240, height: "90vh"}} cols={1} rowHeight={300}>
               {sanitizedCharactersArray.map((character: any) => (
                 <Button onClick={() => handleClick(character)}>
                   <ImageListItem key={character.img}>
@@ -240,8 +237,9 @@ const Predictions = () => {
                       src={`${character.img}`}
                       alt={character.name}
                       loading="lazy"
+                      
                     />  
-                    <Typography gutterBottom variant="h5" component="div" textAlign={"center"} sx={{color: "silver"}}>
+                    <Typography variant="h5" component="div" textAlign={"center"} sx={{color: "silver"}}>
                       {character.name} 
                     </Typography>
                   </ImageListItem>
@@ -294,6 +292,7 @@ const Predictions = () => {
                     name="input-name"
                     placeholder="Enter a number"
                     decimalsLimit={2}
+                    style={{padding: "0.6rem 1rem", width: 130, fontSize: "100%" }}
                     value={inputValue}
                     onValueChange={(value, name, values) => handleInputText(value, "Input number", values)}
                   />
@@ -301,12 +300,17 @@ const Predictions = () => {
               </Grid>
               <Box 
                 sx={{
-                  //alignContent: "center", 
-                  background: theme.palette.primary.dark, 
-                  borderRadius: 5,
-                  width: "50%"
+                  background: "white", 
+                  //width: "100%",
+                  //borderRadius: 5, 
                 }}>
-                  <Typography variant="h4" sx={{p: 2, color: 'white', textAlign: "center", alignSelf: "center"}} >
+                  <Typography variant="h4" 
+                    sx={{
+                      //width: "100%",
+                      p: 0.2, 
+                      color: theme.palette.primary.dark,
+                    }}
+                  >
                     ${prediction}
                   </Typography>
                 </Box>

@@ -3,7 +3,7 @@
 
 [
     {
-        "name": "Michal Saylor",
+        "name": "Michael Saylor",
         "price": {
             "bullish": 49000000, 
             "bear": 3000000
@@ -26,7 +26,7 @@
             "bullish": 1200000
         },
         "date": 2026,
-        "description": "The author of Rich Dad Poor Dad",
+        "description": "Robert Kiyosaki is an entrepreneur, educator, investor, 'Rich Dad Poor Dad', one of the best-selling personal finance books of all time. Kiyosaki is a frequent guest on global media outlets and is the host of the Rich Dad Radio Show podcast, where he and guests discuss everything from the history of banking to the state of the global economy. A strong proponent of entrepreneurship, Kiyosaki has built a financial education empire that extends to board games, courses, and coaching. In addition to 'Rich Dad Poor Dad,' he has authored more than two dozen books, including two with Donald Trump before his presidency. Kiyosaki is assisted in his efforts by his wife, Kim, whom he married in 1986",
         "statement": "1.200.000 (2026).",
         "img": "../robertkiyosaki.jpg"
     }
