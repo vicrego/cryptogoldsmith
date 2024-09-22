@@ -2,8 +2,8 @@
 
 [
     {
-        "title": "USA Ditches 10.000 bitcoins",
-        "text": "Government",
+        "title": "Employment data scares market",
+        "text": "Fear of recession worries market.",
         "positivity": false,
         "date": "15-08-2024"
     },
@@ -22,6 +22,30 @@
     {
         "title": "Expecting the war",
         "text": "Uncertainty about Iran's invasion and economic depression is holding any promisse of Bitcoin's growth.",
+  
+        "date": "13-08-2024"
+    },
+    {
+        "title": "Employment data scares market",
+        "text": "Fear of recession worries market.",
+        "positivity": false,
+        "date": "15-08-2024"
+    },
+    {
+        "title": "USA Ditches 10.000 bitcoins",
+        "text": "Government",
+        "positivity": false,
+        "date": "15-08-2024"
+    },
+    {
+        "title": "Expecting the war",
+        "text": "Uncertainty about Iran's invasion and economic depression is holding any promisse of Bitcoin's growth.",
+        "positivity": true,
+        "date": "13-08-2024"
+    },
+    {
+        "title": "du",
+        "text": "dudu.",
   
         "date": "13-08-2024"
     }

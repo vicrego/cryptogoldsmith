@@ -1,10 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { ThemeProvider, createTheme } from '@mui/material'
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import RalewayWoff2 from './fonts/Raleway-Regular.woff2';
+import { Route, Routes } from 'react-router-dom'
 import News from './components/news/News'
 import Home from './components/home/Home'
 import Current from './components/graphs/currentPrices/Current'
@@ -35,7 +31,7 @@ function App() {
 
     <ThemeProvider theme={theme}>
       <Routes>
-        <Route path="/" element={<Home theme={theme} />} />
+        <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />
         <Route path="/graphs/current" element={<Current />} />
         <Route path="/graphs/predictions" element={<Predictions />} />

@@ -2,8 +2,8 @@
 
 import { useTheme } from '@emotion/react';
 import { Box, Card, CardContent, Grid, Pagination, Stack, Typography } from '@mui/material'
-import React, { useState } from 'react'
-
+import { useState } from 'react'
+import upArrow from "../../../assets/gifs/upArrow.gif"
 
 
 function paginator(items: any, current_page: any, per_page_items: any) {
@@ -26,40 +26,34 @@ function paginator(items: any, current_page: any, per_page_items: any) {
 
 const CardsHomeDisplay = ({currentNews}: any) => {
 
-  const theme = useTheme();
-  
-
+  const theme: any = useTheme();
   const count = Math.ceil(currentNews.length / 4);
   const [page, setPage] = useState(1);
-  const handleChange = (event, value) => {
+
+  const handleChange = (event: any, value: any) => {
+    event = event;
     setPage(paginator(currentNews, value, 3).page);
   };
 
-  let positivity;
-  if(currentNews[0].positivity === true){
-    positivity = "green"
-  } else if (currentNews[0].positivity === false) {
-    positivity = "red"
-  } else {
-    positivity = "yellow"
-  }
-
   
   return (
-    <Box>
-      <Grid container rowSpacing={2} 
-          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-      >
-      {paginator(currentNews, page, 4).data.filter(filtered => filtered !== currentNews[0]).map((filteredNews: any, index: any) => (
-          <Grid item sx={{ width: "30rem"}} xs={6} key={index}>  
-          <Card sx={{ backgroundColor: theme.palette.primary.dark}}>
-              <CardContent>
+    <Stack sx={{ alignItems: "center", height: "70vh", overflowY: "scroll"}}>
+      <Grid container sx={{alignContent: "center"}} rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}  >
+      {paginator(currentNews, page, 4).data.filter((filtered: any) => filtered !== currentNews[0]).map((filteredNews: any, index: any) => (
+        <Grid item sx={{marginLeft: "auto", marginRight: "auto", alignSelf: "center"}}  key={index}>  
+          <Card sx={{ backgroundColor: theme.palette.primary.dark, height: 170}}>
+            <CardContent >
               <Grid container rowSpacing={1} columnSpacing={{ xs: 0, sm: 0, md: 0 }}>
-                  <Grid item xs={9}>
-                  <Typography gutterBottom variant="h5" component="div" sx={{color: filteredNews.positivity ? "green" : filteredNews.positivity === false ? "red" : "yellow"}}>
-                      {filteredNews.title}
-                  </Typography>
-                  </Grid>
+                <Grid item xs={9}>
+                <Typography gutterBottom variant="h5" component="div" sx={{color: filteredNews.positivity ? "green" : filteredNews.positivity === false ? "red" : "yellow"}}>
+                    {filteredNews.title}
+                </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                {filteredNews.positivity === true ?
+                  (<img style={{width: "1rem"}} src={upArrow} alt="upArrow" />) : <img style={{width: "1rem"}} src={upArrow} alt="upArrow" className="rotate90"/>
+                }
+                </Grid>
               </Grid>
               <Typography variant="body2" sx={{color: 'white'}} textAlign={"justify"}>
                   {filteredNews.text}
@@ -67,15 +61,15 @@ const CardsHomeDisplay = ({currentNews}: any) => {
               <Typography variant="caption" sx={{color: 'white'}} component="div" textAlign={"center"}>
                   {filteredNews.date}
               </Typography>
-              </CardContent>
+            </CardContent>
           </Card>
-          </Grid>
+        </Grid>
       ))}
       </Grid>
       <Box sx={{ p:3, display: "flex", justifyContent: "center" }}>
-          <Pagination count={count} page={page} onChange={handleChange} color="primary" sx={{ button: { color: '#ffffff' } }} />
+        <Pagination count={count} page={page} onChange={handleChange} color="primary" sx={{ button: { color: '#ffffff' } }} />
       </Box>
-    </Box>
+    </Stack>
   );
 };
 

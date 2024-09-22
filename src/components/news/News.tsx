@@ -1,15 +1,14 @@
-import { Box, Stack, Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import Layoults from '../layoult/Layoults'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { SetMeal } from '@mui/icons-material';
 import CardsNewsDisplay from './cards/CardsNewsDisplay';
 
 const News = () => {
 
 
   const [news, setNews] = useState([]);
-  /*
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,14 +30,7 @@ const News = () => {
     fetchData();
   }, []);
 
-  //console.log(news);
-  /*
-  try {
-    const response = await axios.request(options);
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
-  }*/
+
   return (
     <Layoults>
       <Stack         

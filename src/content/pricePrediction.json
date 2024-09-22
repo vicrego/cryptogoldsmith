@@ -14,13 +14,6 @@
         "img": "../michaelsaylor.webp"
     },
     {
-        "name": "Mark Cuban",
-        "price": "Good.",
-        "description": "He is a bit",
-        "img": "../markcuban.webp"
-        
-    },
-    {
         "name": "Robert T. Kiyosaki",
         "price": {
             "bullish": 1200000
@@ -29,7 +22,35 @@
         "description": "Robert Kiyosaki is an entrepreneur, educator, investor, 'Rich Dad Poor Dad', one of the best-selling personal finance books of all time. Kiyosaki is a frequent guest on global media outlets and is the host of the Rich Dad Radio Show podcast, where he and guests discuss everything from the history of banking to the state of the global economy. A strong proponent of entrepreneurship, Kiyosaki has built a financial education empire that extends to board games, courses, and coaching. In addition to 'Rich Dad Poor Dad,' he has authored more than two dozen books, including two with Donald Trump before his presidency. Kiyosaki is assisted in his efforts by his wife, Kim, whom he married in 1986",
         "statement": "1.200.000 (2026).",
         "img": "../robertkiyosaki.jpg"
+    },
+    {
+        "name": "Geoffrey Kendrick",
+        "price": {
+            "bullish": 150000
+        },
+        "date": 2024,
+        "description": "Geoff is Head of EM FX Research, West and Crypto Research, Standard Chartered Bank, leading several efforts across the Global Research macro strategy offering. These include EMEA and Latam FX, G10 FX in Europe, and Crypto Research. He joined the Bank in 2016 from Morgan Stanley, where he was the head of Asia rates and FX research based in Hong Kong. During his 20 years of financial-markets experience, he has held roles in macro strategy and FX research (both G10 and EM) in London, Sydney and Hong Kong. He holds an economics degree from Monash University in Melbourne and an MBA from the Australian Graduate School of Management.",
+        "statement": "“As we approach the U.S. election, I expect $100K to be reached and then $150k by year-end in the case of a Trump victory.”",
+        "img": "../geoffreykendrick.jpeg"
+    },
+    {
+        "name": "Cathie Wood",
+        "price": {
+            "bullish": 3800000
+        },
+        "date": 2030,
+        "description": "Catherine Duddy Wood is an American investor and founder, CEO and CIO of Ark Invest, an investment management firm. Her flagship ARK Innovation ETF has received accolades for its performance in 2017, 2020 and 2023, but is also considered by Morningstar to be the third highest 'wealth destroyer' investment fund from 2014–2023, losing US$7.1 billion of shareholder value in ten years.",
+        "statement": "“Last year we put out our bull case for Bitcoin. It was $1.5 million. With this institutional green light that the SEC [Securities and Exchange Commission] has provided, kicking and screaming though it did, the analysis we’ve done is that if institutional investors were to allocate a little more than 5% of their portfolios to Bitcoin, as we think they will over time, that alone would add $2.3 million to the projection I just gave you”",
+        "img": "../cathiewood.jpeg"
+    },
+    {
+        "name": "Michael Novogratz",
+        "price": {
+            "bullish": 100000
+        },
+        "date": 2024,
+        "description": "Michael Novogratz is the Founder and CEO of Galaxy Digital. He was formerly a Partner and President of Fortress Investment Group LLC. Prior to Fortress, Mr. Novogratz spent 11 years at Goldman Sachs, where he was elected Partner in 1998. Mr. Novogratz served on the New York Federal Reserve’s Investment Advisory Committee on Financial Markets from 2012 – 2015. Mr. Novogratz serves as the Chairman of The Bail Project and has made criminal justice reform a focus of his family’s foundation. He also sits on the Board of Overseers at NYU Langone Medical Center and is a board member of Princeton Varsity Club and Jazz Foundation of America. Mr. Novogratz received an AB in Economics from Princeton University and served as a helicopter pilot in the US Army.",
+        "statement": "“If we take $73,000 in the next couple of weeks or so, we are going to end the year at $100,000 or higher”",
+        "img": "../michaelnovogratz.jpg"
     }
-    
-    
 ]
