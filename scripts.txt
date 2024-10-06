@@ -1,4 +1,8 @@
 
 
 npm run dev
-(http://localhost:5175/)
+(http://localhost:5173/)
+
+npm run build
+
+netlify dev
