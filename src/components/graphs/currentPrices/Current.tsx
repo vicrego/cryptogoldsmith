@@ -59,7 +59,7 @@ const Current = () => {
       fetch: '/.netlify/functions/api-historical-price',
       url: `/api/api/v3/coins/${id}/market_chart`,
       params: {vs_currency: 'usd', days: "30"},
-      headers: {accept: 'application/json', 'x-cg-api-key': 'CG-TVPFcDZPCzEVwuTp3GdRwhqZ'}
+
     };
     axios
       .request(options)
