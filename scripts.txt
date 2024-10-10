@@ -6,3 +6,9 @@ npm run dev
 npm run build
 
 netlify dev
+
+To test netlify deploy:
+ntl deploy 
+
+To actually deploy:
+netlify deploy --prod

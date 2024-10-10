@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
 import Layoults from '../../layoult/Layoults'
-import { Box, Stack, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
+import { Box, Stack, ToggleButton, ToggleButtonGroup, Typography, useMediaQuery } from '@mui/material'
 import axios from 'axios'
 import { AgCharts } from 'ag-charts-react'
 
 const Current = () => {
   const [historicalData, setHistoricalData] = useState([]);
   const [day, setDay] = useState<any>();
+
+  const phoneDisplay = useMediaQuery('(max-width:698px)');
 /*
   const http = rateLimit(axios.create(), {
     maxRPS: 2, // Shorthand for perMilliseconds: 1000
@@ -37,8 +39,6 @@ const Current = () => {
     
     axios.get(
       `/.netlify/functions/apiHistoricalPrice?vs_currency=${vs_currency}&days=${day}`,{
-        
-
       }).then(function (response) {
         console.log("response", response)
         for (let i = 0; i < response.data.prices.length; i++){
@@ -52,55 +52,11 @@ const Current = () => {
       .catch(function (error) {
         console.error(error);
       })
-
-/*
-    const options = {
-      method: 'GET',
-      fetch: '/.netlify/functions/api-historical-price',
-      url: `/api/api/v3/coins/${id}/market_chart`,
-      params: {vs_currency: 'usd', days: "30"},
-
-    };
-    axios
-      .request(options)
-      .then(function (response) {
-        /*for (let i = 0; i < response.data.prices.length; i++){
-          let price = response.data.prices[i][1];  
-          let month = response.data.prices[i][0];
-          sortedData.push({month: month, price : price});
-        }*/
-       // console.log(response)
-        //setHistoricalData(sortedData);
-  /*      
-      })
-      .catch(function (error) {
-        console.error(error);
-      })
-*/
-/*
-    axios
-      .request(options)
-      .then(function (response) {
-        for (let i = 0; i < response.data.prices.length; i++){
-          let price = response.data.prices[i][1];  
-          let month = response.data.prices[i][0];
-          sortedData.push({month: month, price : price});
-        }
-        console.log(response)
-        setHistoricalData(sortedData);
-        
-      })
-      .catch(function (error) {
-        console.error(error);
-      })
-      */
   }, [day])
 
 
   useEffect(() => {
-        //setTimeout(() => fetchData(), 1000)
-    if (!day) return; // Skip if day is not yet defined
-    
+    if (!day) return; 
     fetchData();
   }, [day]);
 
@@ -121,7 +77,7 @@ const Current = () => {
         </Typography>
         <AgCharts  
         className="graph"
-        style={{ width: "80%", height: "100%", backdropFilter: 'none', alignSelf: "center" }}
+        style={{ width: phoneDisplay ? "100%" : "80%", height: "100%", backdropFilter: 'none', alignSelf: "center" }}
         options={{
           data: historicalData,
           series: [{
