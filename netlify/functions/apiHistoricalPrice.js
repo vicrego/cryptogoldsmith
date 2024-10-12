@@ -20,10 +20,11 @@ exports.handler = async function () {
 //const fetch = require("node-fetch");
    
 exports.handler = async function (event, context) {
-    const { vs_currency, days } = event.queryStringParameters;
+    const { id, vs_currency, days } = event.queryStringParameters;
+    console.log("id", id)
     console.log("vs_currency", vs_currency)
     console.log("days", days)
-    const historical_api = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=${vs_currency}&days=${days}`
+    const historical_api = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${vs_currency}&days=${days}`
     
     const response = await fetch(historical_api);
     const data = await response.json()

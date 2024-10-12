@@ -7,6 +7,7 @@ import { AgCharts } from 'ag-charts-react'
 const Current = () => {
   const [historicalData, setHistoricalData] = useState([]);
   const [day, setDay] = useState<any>();
+  const [id, setId] = useState();
 
   const phoneDisplay = useMediaQuery('(max-width:698px)');
 /*
@@ -30,15 +31,36 @@ const Current = () => {
   let sortedData: any = [];
   
   useEffect(() => {
+    
     setDay("30");
   }, [])
 
+
+  useEffect(() => {
+    
+    //setCharacter(sanitizedCharactersArray[0]);  
+    axios.get(
+      `/.netlify/functions/apiCoinId`,{
+      }).then(function (response) {
+        console.log("response", response)
+        
+        //setHistoricalData(sortedData);
+        
+      })
+      .catch(function (error) {
+        console.error(error);
+      })
+  }, [])
+
+
+
+
   const fetchData = useMemo(() => async () => {
-    //const id = "bitcoin";
+    const id = "bitcoin";
     const vs_currency = 'usd';
     
     axios.get(
-      `/.netlify/functions/apiHistoricalPrice?vs_currency=${vs_currency}&days=${day}`,{
+      `/.netlify/functions/apiHistoricalPrice?id=${id}&vs_currency=${vs_currency}&days=${day}`,{
       }).then(function (response) {
         console.log("response", response)
         for (let i = 0; i < response.data.prices.length; i++){

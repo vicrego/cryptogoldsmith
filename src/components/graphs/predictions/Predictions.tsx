@@ -44,7 +44,7 @@ const Predictions = () => {
       method: 'GET',
       url: 'https://api.coingecko.com/api/v3/simple/price',
       params: {ids: 'bitcoin', vs_currencies: 'usd'},
-      headers: {accept: 'application/json', 'x-cg-api-key': 'CG-TVPFcDZPCzEVwuTp3GdRwhqZ'}
+      headers: {accept: 'application/json', 'x-cg-api-key': process.env.REACT_APP_API_KEY}
     };
     axios.request(options)
     .then(function (response) {
