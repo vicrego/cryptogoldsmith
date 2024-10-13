@@ -4,14 +4,14 @@ import { Autocomplete, Box, Stack, TextField, ToggleButton, ToggleButtonGroup, T
 import axios from 'axios'
 import { AgCharts } from 'ag-charts-react'
 
-
+/*
 interface CoinIdType {
   id: number;
   symbol: string;
   name: string;
   label: string;
 }
-
+*/
 
 const Current = () => {
   const [historicalData, setHistoricalData] = useState([]);
@@ -104,18 +104,31 @@ const Current = () => {
           value={value}
           //disablePortal
           options={coinId}
-
-          onChange={(_, newValue: string | null) => {
-            setValue(newValue?.value);
+/*
+          onChange={(_, newValue) => {
+            //function handleValueChange() {
+            let value = newValue?.value;
+            setValue(value);
+            //}
+            //handleValueChange();
           }}
+*/
+          onChange={(_, newValue) => {
+            if (newValue && typeof newValue === 'object' && 'value' in newValue) {
+              let value = (newValue as { value: string }).value;
+              setValue(value);
+            }
+          }}
+
           inputValue={inputValue}
           onInputChange={(_, newInputValue) => {
             console.log("newInputValue",newInputValue)
             setInputValue(newInputValue);
           }}
           //getOptionLabel={(option) => option?.label}
-          isOptionEqualToValue={(option, value) =>   
-          option?.label === value?.value}
+          /*isOptionEqualToValue={(option, value) =>   
+            option?.label === value?.value
+          }*/
           sx={{ width: 300, backgroundColor: "white" }}
           renderInput={(params) => <TextField {...params} label="Coin" />}
         />
