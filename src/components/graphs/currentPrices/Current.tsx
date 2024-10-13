@@ -1,13 +1,24 @@
 import { useEffect, useMemo, useState } from 'react'
 import Layoults from '../../layoult/Layoults'
-import { Box, Stack, ToggleButton, ToggleButtonGroup, Typography, useMediaQuery } from '@mui/material'
+import { Autocomplete, Box, Stack, TextField, ToggleButton, ToggleButtonGroup, Typography, useMediaQuery } from '@mui/material'
 import axios from 'axios'
 import { AgCharts } from 'ag-charts-react'
 
+
+interface CoinIdType {
+  id: number;
+  symbol: string;
+  name: string;
+  label: string;
+}
+
+
 const Current = () => {
   const [historicalData, setHistoricalData] = useState([]);
-  const [day, setDay] = useState<any>();
-  const [id, setId] = useState();
+  const [day, setDay] = useState<any>("30");
+  const [coinId, setCoinId] = useState<any>("");
+  const [value, setValue] = useState<string | null >("bitcoin");
+  const [inputValue, setInputValue] = useState('');
 
   const phoneDisplay = useMediaQuery('(max-width:698px)');
 /*
@@ -16,7 +27,6 @@ const Current = () => {
   });
 */
   
-
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     currentDay: string,
@@ -26,25 +36,22 @@ const Current = () => {
       setDay(currentDay)
     }
   };
-  
-  
-  let sortedData: any = [];
-  
+  /*
   useEffect(() => {
-    
     setDay("30");
   }, [])
-
-
+*/
   useEffect(() => {
-    
+    let sortedData: any = [];
     //setCharacter(sanitizedCharactersArray[0]);  
     axios.get(
       `/.netlify/functions/apiCoinId`,{
       }).then(function (response) {
-        console.log("response", response)
-        
-        //setHistoricalData(sortedData);
+        sortedData = response.data.map((item: any) => ({
+          value: item.id,
+          label: item.name,
+        }));
+        setCoinId(sortedData);
         
       })
       .catch(function (error) {
@@ -52,36 +59,31 @@ const Current = () => {
       })
   }, [])
 
-
-
-
   const fetchData = useMemo(() => async () => {
-    const id = "bitcoin";
+    //const id = "bitcoin";
+    console.log("value", value)
     const vs_currency = 'usd';
-    
+    let sortedData: any = [];
     axios.get(
-      `/.netlify/functions/apiHistoricalPrice?id=${id}&vs_currency=${vs_currency}&days=${day}`,{
+      `/.netlify/functions/apiHistoricalPrice?id=${value}&vs_currency=${vs_currency}&days=${day}`,{
       }).then(function (response) {
-        console.log("response", response)
         for (let i = 0; i < response.data.prices.length; i++){
           let price = response.data.prices[i][1];  
           let month = response.data.prices[i][0];
           sortedData.push({month: month, price : price});
         }
         setHistoricalData(sortedData);
-        
       })
       .catch(function (error) {
         console.error(error);
       })
-  }, [day])
+  }, [day, value])
 
 
   useEffect(() => {
     if (!day) return; 
     fetchData();
-  }, [day]);
-
+  }, [day, value]);
 
   return (
     <Layoults>
@@ -91,11 +93,32 @@ const Current = () => {
         gap: 3,
         textAlign: "center"
       }}>
+        <div>{`value: ${value !== null ? `'${value}'` : 'null'}`}</div>
+        <div>{`inputValue: '${inputValue}'`}</div>
         <Typography variant="h3" textAlign="center" sx={{p: 2}}>
             Current Price
         </Typography>
         <Typography variant="h4" textAlign="left" sx={{marginLeft: "12%"}}>
-          Bitcoin
+        <Autocomplete
+         
+          value={value}
+          //disablePortal
+          options={coinId}
+
+          onChange={(_, newValue: string | null) => {
+            setValue(newValue?.value);
+          }}
+          inputValue={inputValue}
+          onInputChange={(_, newInputValue) => {
+            console.log("newInputValue",newInputValue)
+            setInputValue(newInputValue);
+          }}
+          //getOptionLabel={(option) => option?.label}
+          isOptionEqualToValue={(option, value) =>   
+          option?.label === value?.value}
+          sx={{ width: 300, backgroundColor: "white" }}
+          renderInput={(params) => <TextField {...params} label="Coin" />}
+        />
         </Typography>
         <AgCharts  
         className="graph"

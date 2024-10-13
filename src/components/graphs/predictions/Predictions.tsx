@@ -10,6 +10,7 @@ import Carousel from 'react-material-ui-carousel';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons/faTriangleExclamation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
 interface Character {
   price: {
     bullish: number,
@@ -44,7 +45,7 @@ const Predictions = () => {
       method: 'GET',
       url: 'https://api.coingecko.com/api/v3/simple/price',
       params: {ids: 'bitcoin', vs_currencies: 'usd'},
-      headers: {accept: 'application/json', 'x-cg-api-key': process.env.REACT_APP_API_KEY}
+      headers: {accept: 'application/json', 'x-cg-api-key': import.meta.env.REACT_APP_API_KEY}
     };
     axios.request(options)
     .then(function (response) {
